@@ -1,7 +1,19 @@
+<!-- <?php
+    // dd(Session::get('user.id'));
+    // if (Session::get('login')==false){
+    //     return redirect()->action('LoginController@login');
+    //}
+        
+    ?> -->
+<?php
+    //dd(Cookie::get('ID'));
+?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Web dieu khien</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
 </head>
 <style type="text/css">
@@ -24,6 +36,7 @@
     }
 </style>
 <body>
+    
     <h1>PAGE HOME BẬT TẮT CÔNG TẮC !!</h1>
    <form action="" method="post">
     <table>
@@ -42,15 +55,22 @@
                         <span class="switch-handle"></span>
                     </label> 
                 </td>
+                <td> <?php echo $value->login;?></td>
             </tr>
               <?php } ?>
 
         
     </table>
+    
+    @if (session('success'))
+          <div class="alert alert-danger" role="alert" style="color:Tomato">
+              {{ session('success') }}
+          </div>
+    @endif
     <input type="submit" value="Change" style="margin-top: 20px;color: darkred;font-family: courier;"> </input>
     @csrf
     </form>
-    <div class="pull-right" style="margin-top: 50px;font-family: courier;"><a class="btn btn-primary" href="http://localhost/web_dieu_khien/public/logout">LOGOUT</a></div>
+    <div class="pull-right" style="margin-top: 50px;font-family: courier;"><a class="btn btn-primary" href="http://localhost/web_dieu_khien/public/logout/">LOGOUT</a></div>
 
 </body>
 <!-- checked -->

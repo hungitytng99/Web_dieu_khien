@@ -2,9 +2,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+//use App\Http\Controllers\Cookie;
 use Session;
+use Cookie;
 use \DB;
 
 class UserController extends Controller{
@@ -21,9 +24,11 @@ public function postlogin(Request $request){
         foreach ($admin as $value) {
             # code...
             if($value->password==$password){
-                // $login=$request::session()->put('login', true);
-                // $loginid=$request::session()->put('ID', $value->id);
-                return view('admin'); 
+                $id=0;
+                Session::put('login', true);
+                Session::push('user.id', $id);
+                Cookie::queue("ID", $id, 365*24*60);
+                return redirect()->action('LoginController@admin'); 
                 break; 
             }
         } 
@@ -35,41 +40,49 @@ public function postlogin(Request $request){
         	# code...
         	if($value->password==$password){
         		
-                //$idus=$value->id;
-            	// $cn= DB::table('connective')
-             //    ->select('id_tb')
-             //    ->where('id_us', $value->id)
-             //    ->get();
+            
 
                 $st = DB::table('thiet_bi')
                 ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
                 ->where('connective.id_us',$value->id)
                 ->get();
-                //->whereColumn('thiet_bi.id','=','connective.id_tb')
-                //->where('id_us',$value->id)
-                //->orderBy('id', 'asc')
-                //->get();
-                //dd($st);
                 $id=$value->id;
-                // $login=$request::session()->put('login', true);
-                // $loginid=$request::session()->put('ID', $value->id);
+                Session::put('login', true);
+                Session::push('user.id', $id);
+                Cookie::queue("ID", $id, 365*24*60);
 
-
-               return redirect()->action('HomeController@home', ['id' => $id]);
-                 
+                return redirect()->action('HomeController@home', ['id' => $id]);    
         	}
-        	else{
-            return redirect('/login')->withMessage('User approved successfully'); 
-        } 
+        	
         }
 
-        
+
+    return redirect()->action('LoginController@login')->with('error', 'Login failed! User account or password incorrect.');   
                
 }
 public function getuser(){
     $user=DB::table('users') 
             ->get();
     return $user;
+}
+public function logout(){
+        $id=Cookie::get('ID');
+        $st = DB::table('thiet_bi')
+                ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
+                ->where('connective.id_us',$id)
+                ->get();
+        foreach ($st as $value){
+            if($value->isOn=='1'){
+                $count=$value->login;
+                $count-=1;
+                DB::table('thiet_bi') ->where('id',$value->id)->update(['login'=>$count]);
+            }
+        }
+
+    Session::pull('user.id', $id);
+    Session::put('login', false);
+    Cookie::forget("ID");
+    return redirect()->action('LoginController@login');
 }
 }
 ?>

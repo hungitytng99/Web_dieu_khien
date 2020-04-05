@@ -6,6 +6,7 @@
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\DB;
+    use Session;
 
     /**
      *  Display a listing of the resource.
@@ -16,18 +17,35 @@
 
     public function index()
     {
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
         $st = DB::table('thiet_bi')->orderBy('id', 'asc')->get();
         return view('/admin_thiet_bi',compact('st'));
     }
+
     public function edit($id)
     {
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
         $value = DB::table('thiet_bi')->find($id);
         $pageName = 'Update Thiet Bi';
         return view('/edit_thiet_bi', compact('value', 'pageName'));
     }
+
+    // public function edittb(){
+    //     return view('/edit_thiet_bi');
+    // }
+
     public function update(Request $request, $id)
     {
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
         //$value=$request->all();
+        if(($request->name==null)||($request->isOn==null)){
+        
+        return redirect()->action('AdminThietBiController@edit',['id'=>$id])->with('error', 'Name and status may not be blank.');    
+        }
+
         $news = DB::table('thiet_bi')
                 ->where('id',$id)
                 ->update(array(
@@ -40,23 +58,35 @@
         // $news->comment = $request->comment;
 
         // $news->save();
-        return redirect()->action('AdminThietBiController@index');
+        return redirect()->action('AdminThietBiController@index')->with('success', 'Update success.');
         
     }
     public function delete($id)
     {
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
         $value = DB::table('thiet_bi')
                 ->where('id',$id)
                 ->delete();
         
-        return redirect()->action('AdminThietBiController@index');
+        return redirect()->action('AdminThietBiController@index')->with('success', 'Delete success.');
     }
     public function add(Request $request)
     {
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
+        if(($request->isOn=='0')||($request->isOn=='1')){
         DB::table('thiet_bi')
         ->insert(
-            ['id'=>$request->id, 'name'=>$request->name, 'isOn'=>$request->isOn, 'comment'=>$request->comment]);
-        return redirect()->action('AdminThietBiController@index');
+            [ 'name'=>$request->name, 'isOn'=>$request->isOn, 'comment'=>$request->comment]);
+        return redirect()->action('AdminThietBiController@index')->with('success', 'Add success.');        
+            
+        }
+        
+            return redirect()->action('AdminThietBiController@index')->with('error', 'Add fail.The state must be either 1 or 0.');
+        
+
+
 
     }
     }

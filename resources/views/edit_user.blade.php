@@ -23,7 +23,11 @@
         <label for="comment">Comment</label><br>
         <input type="text" name="comment" value="{{ $value->comment }}">
     </p>
-    
+        @if (session('error'))
+          <div class="alert alert-danger" role="alert" style="color:Tomato">
+              {{ session('error') }}
+          </div>
+        @endif
 
     <p>
         <button type="submit">Edit</button>

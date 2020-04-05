@@ -40,6 +40,8 @@
     
     <h1>CONNECTIVE </h1>
     <div class="pull-right" style="margin-top: 10px;font-family: courier;"><a class="btn btn-primary" href="http://localhost/web_dieu_khien/public/logout">LOGOUT</a></div>
+    
+    
     <div class="col-md-6 col-xs-offset-3" style="margin-top:30px;">
         <form action="/web_dieu_khien/public/addcn" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -72,6 +74,11 @@
                 </div>
               </div>
             </div>
+            @if (session('success'))
+                <div class="alert alert-danger" role="alert" style="color:Tomato">
+                    {{ session('success') }}
+                </div>
+            @endif
 		</form>
 	</div> 
 	<h3>List connective</h3>

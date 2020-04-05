@@ -1,11 +1,12 @@
 <?php
 
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use App\News;
-    use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
-    use Illuminate\Support\Facades\DB;
+use App\News;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Session;
 
     /**
      *  Display a listing of the resource.
@@ -17,6 +18,8 @@
     public function connective()
     {
         //$cn = DB::table('connective')->orderBy('id_us', 'asc')->get();
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
         $user = DB::table('users')->orderBy('id', 'asc')->get();
         $st = DB::table('thiet_bi')->orderBy('id', 'asc')->get();
         $cn = DB::table('connective')
@@ -46,16 +49,19 @@
                 ->get();
         $user = DB::table('users')->orderBy('id', 'asc')->get();
         $st = DB::table('thiet_bi')->orderBy('id', 'asc')->get();
-        return view('/connective',compact('user', 'st', 'cn'));
+        //return view('/connective',compact('user', 'st', 'cn'))->with('success', 'Add success.');
+        return redirect()->action('ConnectiveController@connective',['user'=>$user, 'st'=>$st, 'cn'=>$cn])->with('success', 'Add success.');
 
     }
     public function delete($id)
     {
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
         $value = DB::table('connective')
                 ->where('id_cn',$id)
                 ->delete();
         
-        return redirect()->action('ConnectiveController@connective');
+        return redirect()->action('ConnectiveController@connective')->with('success', 'Delete success.');
     }
 
 }

@@ -1,7 +1,10 @@
+<!-- <?php
+//dd(Session::get('login'));
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login V16</title>
+  <title>Login controller</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->  
@@ -31,6 +34,7 @@
   
   <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+
       <div class="wrap-login100 p-t-30 p-b-50">
         <span class="login100-form-title p-b-41">
           Account Login
@@ -46,7 +50,11 @@
             <input class="input100" type="password" name="password" placeholder="Password">
             <span class="focus-input100" data-placeholder="&#xe80f;"></span>
           </div>
-
+        @if (session('error'))
+          <div class="alert alert-danger" role="alert" style="color:Tomato">
+              {{ session('error') }}
+          </div>
+        @endif
           <div class="container-login100-form-btn m-t-32">
             <button class="login100-form-btn">
               Login

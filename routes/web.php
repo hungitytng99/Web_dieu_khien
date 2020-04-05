@@ -13,6 +13,7 @@
 */
 Route::get('/login', 'LoginController@login');
 Route::post('/login', 'UserController@postlogin');
+Route::get('/admin', 'LoginController@admin');
 Route::get('/home/{id}', 'HomeController@home');
 Route::get('/homead', 'HomeController@homead');
 Route::post('/home/{id}','HomeController@change');
@@ -30,10 +31,7 @@ Route::post('/addtb', 'AdminThietBiController@add');
 Route::get('/connective','ConnectiveController@connective');
 Route::post('/addcn','ConnectiveController@add');
 Route::get('/deletecn/{id}', 'ConnectiveController@delete');
-Route::get('/logout', function(){
-    // Request::session()->flush();
-    return redirect()->action('LoginController@login');
-});
+Route::get('/logout','UserController@logout' );
 
 ?>
 

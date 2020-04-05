@@ -5,6 +5,7 @@ use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 /**
      *  Display a listing of the resource.
@@ -14,23 +15,62 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller{   
     public function home($id) {
-    // 	// $cn= DB::table('connective')
-    // 	// ->where('id_us', $idus);
-    // 	// $st = DB::table('thiet_bi')
-    // 	// ->whereIn('id',$cn->id_tb)
-    // 	// ->orderBy('id', 'asc')
-    // 	// ->get();
-    	$st = DB::table('thiet_bi')
+    
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
+        DB::table('users')->update(['on'=>0]);
+        $list_id =Session::get('user.id');
+        foreach ($list_id as $key => $value) {
+            DB::table('users')->where('id',$value)->update(['on'=>1]);
+        }
+
+        $tb=DB::table('thiet_bi')->get();
+        foreach ($tb as $value) {
+            # code...
+            $st = DB::table('connective')
+                ->join('thiet_bi', 'thiet_bi.id', '=', 'connective.id_tb')
+                ->join('users', 'users.id', '=', 'connective.id_us')
+                ->where('connective.id_tb',$value->id)
+                ->where('users.on',1)
+                ->where('thiet_bi.isOn',1)
+                ->count();
+            DB::table('thiet_bi') ->where('id',$value->id)->update(['login'=>$st]);
+        }
+
+        
+        $st = DB::table('thiet_bi')
                 ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
                 ->where('connective.id_us',$id)
                 ->get();
         return view('home',compact('st'));
+        
      }
 
     public function homead(){
-    	$st = DB::table('thiet_bi')
-    	->orderBy('id', 'asc')
-    	->get();
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
+    	DB::table('users')->update(['on'=>0]);
+        $list_id =Session::get('user.id');
+        foreach ($list_id as $key => $value) {
+            DB::table('users')->where('id',$value)->update(['on'=>1]);
+        }
+
+        $tb=DB::table('thiet_bi')->get();
+        foreach ($tb as $value) {
+            # code...
+            $st = DB::table('connective')
+                ->join('thiet_bi', 'thiet_bi.id', '=', 'connective.id_tb')
+                ->join('users', 'users.id', '=', 'connective.id_us')
+                ->where('connective.id_tb',$value->id)
+                ->where('users.on',1)
+                ->where('thiet_bi.isOn',1)
+                ->count();
+            
+            DB::table('thiet_bi') ->where('id',$value->id)->update(['login'=>$st]);
+        }
+        $st = DB::table('thiet_bi')
+        ->orderBy('id', 'asc')
+        ->get();
         return view('home',compact('st'));
     }
 
@@ -38,6 +78,8 @@ class HomeController extends Controller{
     {
     	//$stt = DB::table('thiet_bi')->get();
     	//dd($request);
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
     	$st = DB::table('thiet_bi')
                 ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
                 ->where('connective.id_us',$id)
@@ -54,11 +96,13 @@ class HomeController extends Controller{
     		}
     	}
     	
-        return redirect()->action('HomeController@home', ['id' => $id]);
+        return redirect()->action('HomeController@home', ['id' => $id])->with('success', 'The change has been saved');
     	
     }
     public function changead(Request $request)
     {
+        if (Session::get('login')==false){
+            return redirect()->action('LoginController@login');}
     	$stt = DB::table('thiet_bi')->get();
     	foreach ($stt as $key) {
     		# code...
@@ -71,8 +115,7 @@ class HomeController extends Controller{
     		}
     	}
     	
-        return redirect()->action('HomeController@homead');
+        return redirect()->action('HomeController@homead')->with('success', 'The change has been saved!!!');
     	
     }
 }
-?>

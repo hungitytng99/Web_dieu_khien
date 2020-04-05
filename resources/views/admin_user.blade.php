@@ -44,14 +44,7 @@
                 ADD USER
               </div>
               <div class="panel-body">
-                <div class="col-md-112" style="margin-top: 20px; color: darkred;">
-                  <div class="col-md-4">
-                    ID
-                  </div>
-                  <div class="col-md-8">
-                    <input type="text" name="id" class="form-control" required>
-                  </div>
-                </div>
+                
                 <div class="col-md-112" style="margin-top: 20px; color: darkred;">
                   <div class="col-md-4">
                     username
@@ -83,6 +76,11 @@
                 </div>
               </div>
             </div>
+            @if (session('success'))
+                <div class="alert alert-danger" role="alert" style="color:Tomato">
+                    {{ session('success') }}
+                </div>
+            @endif            
 		</form>
 	</div> 
 
