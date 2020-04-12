@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Session;
+use Cookie;
 
 /**
      *  Display a listing of the resource.
@@ -16,7 +17,7 @@ use Session;
 class HomeController extends Controller{   
     public function home($id) {
     
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=$id){
             return redirect()->action('LoginController@login');}
         DB::table('users')->update(['on'=>0]);
         $list_id =Session::get('user.id');
@@ -47,7 +48,7 @@ class HomeController extends Controller{
      }
 
     public function homead(){
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
     	DB::table('users')->update(['on'=>0]);
         $list_id =Session::get('user.id');
@@ -71,14 +72,14 @@ class HomeController extends Controller{
         $st = DB::table('thiet_bi')
         ->orderBy('id', 'asc')
         ->get();
-        return view('home',compact('st'));
+        return view('admin',compact('st'));
     }
 
     public function change(Request $request, $id)
     {
     	//$stt = DB::table('thiet_bi')->get();
     	//dd($request);
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=$id){
             return redirect()->action('LoginController@login');}
     	$st = DB::table('thiet_bi')
                 ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
@@ -101,7 +102,7 @@ class HomeController extends Controller{
     }
     public function changead(Request $request)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
     	$stt = DB::table('thiet_bi')->get();
     	foreach ($stt as $key) {

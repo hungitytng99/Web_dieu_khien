@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Session;
-
+use Cookie;
     /**
      *  Display a listing of the resource.
      *
@@ -18,7 +18,7 @@ use Session;
     public function connective()
     {
         //$cn = DB::table('connective')->orderBy('id_us', 'asc')->get();
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $user = DB::table('users')->orderBy('id', 'asc')->get();
         $st = DB::table('thiet_bi')->orderBy('id', 'asc')->get();
@@ -30,6 +30,9 @@ use Session;
         return view('/connective',compact('user', 'st', 'cn'));
     }
     public function add(Request $request){
+        if (Cookie::get('ID')!=0){
+            return redirect()->action('LoginController@login');}
+
         $users = DB::table('users')->find($request->idus);
         $sts = DB::table('thiet_bi')->find($request->idtb);
 
@@ -55,7 +58,7 @@ use Session;
     }
     public function delete($id)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $value = DB::table('connective')
                 ->where('id_cn',$id)

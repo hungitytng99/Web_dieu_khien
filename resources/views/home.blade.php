@@ -1,13 +1,4 @@
-<!-- <?php
-    // dd(Session::get('user.id'));
-    // if (Session::get('login')==false){
-    //     return redirect()->action('LoginController@login');
-    //}
-        
-    ?> -->
-<?php
-    //dd(Cookie::get('ID'));
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,8 +28,8 @@
 </style>
 <body>
     
-    <h1>PAGE HOME BẬT TẮT CÔNG TẮC !!</h1>
-   <form action="" method="post">
+    <h1>DEVICE CONTROLLER</h1>
+    <form action="" method="post">
     <table>
             <?php foreach ($st as $value) {?>
             <tr>
@@ -55,7 +46,62 @@
                         <span class="switch-handle"></span>
                     </label> 
                 </td>
-                <td> <?php echo $value->login;?></td>
+                <td> <?php 
+                if($value->id==1){
+
+                    // shell_exec("ssh -p 2222 root@127.0.0.1");
+                    $name=shell_exec("who");
+                    
+                    $array=explode("\n", $name);
+                    
+                    $n=count($array);
+                    //echo $n;
+                    for($i=0; $i<$n; $i++){
+                        $array[$i]=explode(' ', $array[$i]);
+                        //dd($array[$i]);
+                    }
+                    for($i=0; $i<count($array); $i++){
+                        for($j=$i+1; $j<count($array); $j++){
+                            if(($array[$i][0]===$array[$j][0])&&($array[$i][count($array[$i])-1]===$array[$j][count($array[$j])-1])) {
+                                $array[$i][0]="";
+                                $n--;
+                            }
+                        }
+                    }
+                    
+                    for($i=0; $i<count($array); $i++){
+                        if($array[$i][0]===""){}else {echo $array[$i][0];echo $array[$i][count($array[$i])-1] ; echo "<br>";}
+                    }
+
+                }
+                if($value->id==2){
+
+                    //shell_exec("ssh -p 2222 root@127.0.0.1");
+                    $name=shell_exec("who");
+                    
+                    $array=explode("\n", $name);
+                    
+                    $n=count($array);
+                    //echo $n;
+                    for($i=0; $i<$n; $i++){
+                        $array[$i]=explode(' ', $array[$i]);
+                        //dd($array[$i]);
+                    }
+                    for($i=0; $i<count($array); $i++){
+                        for($j=$i+1; $j<count($array); $j++){
+                            if(($array[$i][0]===$array[$j][0])&&($array[$i][count($array[$i])-1]===$array[$j][count($array[$j])-1])) {
+                                $array[$i][0]="";
+                                $n--;
+                            }
+                        }
+                    }
+                    
+                    for($i=0; $i<count($array); $i++){
+                        if($array[$i][0]===""){}else {echo $array[$i][0];echo $array[$i][count($array[$i])-1] ; echo "<br>";}
+                    }
+                }
+                ?>   
+                </td>
             </tr>
               <?php } ?>
 
@@ -70,7 +116,7 @@
     <input type="submit" value="Change" style="margin-top: 20px;color: darkred;font-family: courier;"> </input>
     @csrf
     </form>
-    <div class="pull-right" style="margin-top: 50px;font-family: courier;"><a class="btn btn-primary" href="http://localhost/web_dieu_khien/public/logout/">LOGOUT</a></div>
+    <div class="pull-right" style="margin-top: 50px;font-family: courier;"><a class="btn btn-primary" href="http://localhost:8000/logout/">LOGOUT</a></div>
 
 </body>
 <!-- checked -->

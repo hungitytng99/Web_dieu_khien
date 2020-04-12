@@ -13,7 +13,7 @@
 */
 Route::get('/login', 'LoginController@login');
 Route::post('/login', 'UserController@postlogin');
-Route::get('/admin', 'LoginController@admin');
+// Route::get('/admin', 'LoginController@admin');
 Route::get('/home/{id}', 'HomeController@home');
 Route::get('/homead', 'HomeController@homead');
 Route::post('/home/{id}','HomeController@change');

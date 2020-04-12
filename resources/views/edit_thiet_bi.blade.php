@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>{{ $pageName }}</h1>
-<form method="post" action="/web_dieu_khien/public/updatetb/{{$value->id}}">
+<form method="post" action="/updatetb/{{$value->id}}">
     @method('PATCH')
     @csrf
     <input type="hidden" name="id" value="{{ $value->id }}">

@@ -12,12 +12,12 @@ use Cookie;
 class LoginController extends Controller{   
     public function login() {
     	//dd(Cookie::get('ID'));
-    	if(Cookie::get('ID')==-1)return view('login');
+    	if(Cookie::get('ID')==-1) return view('login');
     	if(Cookie::get('ID')==0){
     		$id=0;
             Session::put('login', true);
             Session::push('user.id', $id);
-			return redirect()->action('LoginController@admin'); 
+			return redirect()->action('HomeController@homead'); 
     	}
     	if(Cookie::get('ID')!=0){
     		$id=Cookie::get('ID');
@@ -29,13 +29,15 @@ class LoginController extends Controller{
     }
 
   
-    public function admin() {
-    	if (Session::get('login')==false){
-            return redirect()->action('LoginController@login');}
-        else{
-        	return view('admin');
-        }
+    // public function admin() {
+    //     //dd(Session::get('login'));
+    // 	if (Cookie::get('ID')==0){
+    //         return view('admin');}
+    //     else{
+    //         return redirect()->action('LoginController@login');
+        	
+    //     }
         
-    }
+    // }
 }
 ?>

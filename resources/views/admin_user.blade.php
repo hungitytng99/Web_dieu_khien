@@ -32,12 +32,31 @@
       background-color: lightcoral;
       color: white;
     }
+    a:link, a:visited {
+        background-color: indianred;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    a:hover, a:active {
+        background-color: darkred;
+    }
 </style>
 <body>
-    <h1>QUẢN LÝ USER</h1>
+    <div class="pull-right" style="margin-top: 30px;font-family: courier; font-size: 150%;">
+        <a class="btn btn-primary" href="http://localhost:8000/homead">CONTROL PAGE</a>
+        <a class="btn btn-primary" href="http://localhost:8000/admin_user">USER MANAGEMENT</a>
+        <a class="btn btn-primary" href="http://localhost:8000/admin_thiet_bi"> DEVICE MANAGEMENT </a>
+        <a class="btn btn-primary" href="http://localhost:8000/connective">CONNECTIVE MANAGEMENT</a>
+    </div>
+    <div class="pull-right" style="margin-top: 5px;font-family: courier;font-size: 75%;"><a class="btn btn-primary" href="http://localhost:8000/logout">LOGOUT</a></div>
+    <h1>USER MANAGEMENT</h1>
     
     <div class="col-md-6 col-xs-offset-3" style="margin-top:50px;">
-        <form action="/web_dieu_khien/public/addus" method="post">
+        <form action="/addus" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="panel panel-info">
               <div class="panel-heading" style="margin-top: 20px; color: darkred;">
@@ -90,7 +109,6 @@
         	<tr>
             	<th>ID</th>
             	<th>username</th>
-            	<th>password</th>
             	<th>comment</th>
             	<th>Tools</th>
         	</tr>
@@ -100,15 +118,14 @@
             <tr>
                 <td><?php echo $value->id;?> </td>
                 <td><?php echo $value->username;?> </td>
-                <td><?php echo $value->password;?> </td>
                 <td><?php echo $value->comment;?> </td>
-                <td> <a href="http://localhost/web_dieu_khien/public/editus/{{$value->id}}">Edit</a> | <a href="http://localhost/web_dieu_khien/public/deleteus/{{$value->id}}">Delete</a></td>
+                <td> <a href="http://localhost:8000/editus/{{$value->id}}">Edit</a>  <a href="http://localhost:8000/deleteus/{{$value->id}}">Delete</a></td>
             </tr>
               <?php } ?>
         </tbody>
     </table>
 
-    <div class="pull-right" style="margin-top: 50px;font-family: courier;"><a class="btn btn-primary" href="http://localhost/web_dieu_khien/public/logout">LOGOUT</a></div>
+    
 </body>
 
 </html>

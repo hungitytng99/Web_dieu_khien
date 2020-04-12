@@ -7,6 +7,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\DB;
     use Session;
+    use Cookie;
 
     /**
      *  Display a listing of the resource.
@@ -17,7 +18,7 @@
 
     public function index()
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $st = DB::table('thiet_bi')->orderBy('id', 'asc')->get();
         return view('/admin_thiet_bi',compact('st'));
@@ -25,7 +26,7 @@
 
     public function edit($id)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $value = DB::table('thiet_bi')->find($id);
         $pageName = 'Update Thiet Bi';
@@ -38,7 +39,7 @@
 
     public function update(Request $request, $id)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         //$value=$request->all();
         if(($request->name==null)||($request->isOn==null)){
@@ -63,7 +64,7 @@
     }
     public function delete($id)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $value = DB::table('thiet_bi')
                 ->where('id',$id)
@@ -73,7 +74,7 @@
     }
     public function add(Request $request)
     {
-        if (Session::get('login')==false){
+        if (CCookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         if(($request->isOn=='0')||($request->isOn=='1')){
         DB::table('thiet_bi')

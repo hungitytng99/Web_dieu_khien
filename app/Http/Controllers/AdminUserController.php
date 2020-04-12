@@ -7,6 +7,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\DB;
     use Session;
+    use Cookie;
 
     /**
      *  Display a listing of the resource.
@@ -17,14 +18,14 @@
 
     public function index()
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $user = DB::table('users')->orderBy('id', 'asc')->get();
         return view('/admin_user',compact('user'));
     }
     public function edit($id)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $value = DB::table('users')->find($id);
         $pageName = 'News - Update';
@@ -32,7 +33,7 @@
     }
     public function update(Request $request, $id)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         //$value=$request->all();
         if(($request->username==null)||($request->password==null)||($request->comment==null)){
@@ -57,7 +58,7 @@
     }
     public function delete($id)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $value = DB::table('users')
                 ->where('id',$id)
@@ -67,7 +68,7 @@
     }
     public function add(Request $request)
     {
-        if (Session::get('login')==false){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         DB::table('users')
         ->insert(

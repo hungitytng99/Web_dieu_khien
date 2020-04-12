@@ -25,10 +25,12 @@ public function postlogin(Request $request){
             # code...
             if($value->password==$password){
                 $id=0;
-                Session::put('login', true);
+                //Session::put('login', true);
                 Session::push('user.id', $id);
                 Cookie::queue("ID", $id, 365*24*60);
-                return redirect()->action('LoginController@admin'); 
+                //Cookie::queue("login", true, 365*24*60);
+                
+                return redirect()->action('HomeController@homead'); 
                 break; 
             }
         } 
@@ -47,10 +49,10 @@ public function postlogin(Request $request){
                 ->where('connective.id_us',$value->id)
                 ->get();
                 $id=$value->id;
-                Session::put('login', true);
+                //Session::put('login', true);
                 Session::push('user.id', $id);
                 Cookie::queue("ID", $id, 365*24*60);
-
+                //Cookie::queue("login", true, 365*24*60);
                 return redirect()->action('HomeController@home', ['id' => $id]);    
         	}
         	
@@ -60,11 +62,7 @@ public function postlogin(Request $request){
     return redirect()->action('LoginController@login')->with('error', 'Login failed! User account or password incorrect.');   
                
 }
-public function getuser(){
-    $user=DB::table('users') 
-            ->get();
-    return $user;
-}
+
 public function logout(){
         $id=Cookie::get('ID');
         $st = DB::table('thiet_bi')
@@ -78,10 +76,12 @@ public function logout(){
                 DB::table('thiet_bi') ->where('id',$value->id)->update(['login'=>$count]);
             }
         }
-
+    $id=-1;
     Session::pull('user.id', $id);
-    Session::put('login', false);
-    Cookie::forget("ID");
+    Cookie::queue("login", false, 365*24*60);
+    // dd(Session::get('login'));
+    Cookie::queue("ID", $id, 365*24*60);
+    //dd(Session::get('ID'));
     return redirect()->action('LoginController@login');
 }
 }
