@@ -60,6 +60,9 @@
         $value = DB::table('thiet_bi')
                 ->where('id',$id)
                 ->delete();
+        $value = DB::table('connective')
+                ->where('id_tb',$id)
+                ->delete();
         
         return redirect()->action('AdminThietBiController@index')->with('success', 'Delete success.');
     }

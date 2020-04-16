@@ -58,7 +58,11 @@
         $value = DB::table('users')
                 ->where('id',$id)
                 ->delete();
-        
+
+        $value = DB::table('connective')
+                ->where('id_us',$id)
+                ->delete();
+
         return redirect()->action('AdminUserController@index')->with('success', 'Delete success.');
     }
     public function add(Request $request)
