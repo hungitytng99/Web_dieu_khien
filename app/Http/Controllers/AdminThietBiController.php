@@ -33,10 +33,6 @@
         return view('/edit_thiet_bi', compact('value', 'pageName'));
     }
 
-    // public function edittb(){
-    //     return view('/edit_thiet_bi');
-    // }
-
     public function update(Request $request, $id)
     {
         if (Cookie::get('ID')!=0){
@@ -54,11 +50,6 @@
                     'isOn'=> $request->isOn,
                     'comment'=> $request->comment
                 ));
-        // $news->username = $request->username;
-        // $news->password = $request->password;
-        // $news->comment = $request->comment;
-
-        // $news->save();
         return redirect()->action('AdminThietBiController@index')->with('success', 'Update success.');
         
     }

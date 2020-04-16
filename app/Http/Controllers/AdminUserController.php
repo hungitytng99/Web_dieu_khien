@@ -48,11 +48,6 @@
                     'password'=> $request->password,
                     'comment'=> $request->comment
                 ));
-        // $news->username = $request->username;
-        // $news->password = $request->password;
-        // $news->comment = $request->comment;
-
-        // $news->save();
         return redirect()->action('AdminUserController@index')->with('success', 'Update success.');
         
     }

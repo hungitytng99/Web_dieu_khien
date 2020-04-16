@@ -28,16 +28,5 @@ class LoginController extends Controller{
     	}
     }
 
-  
-    // public function admin() {
-    //     //dd(Session::get('login'));
-    // 	if (Cookie::get('ID')==0){
-    //         return view('admin');}
-    //     else{
-    //         return redirect()->action('LoginController@login');
-        	
-    //     }
-        
-    // }
 }
 ?>

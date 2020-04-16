@@ -77,8 +77,7 @@ class HomeController extends Controller{
 
     public function change(Request $request, $id)
     {
-    	//$stt = DB::table('thiet_bi')->get();
-    	//dd($request);
+    	
         if (Cookie::get('ID')!=$id){
             return redirect()->action('LoginController@login');}
     	$st = DB::table('thiet_bi')
@@ -86,8 +85,6 @@ class HomeController extends Controller{
                 ->where('connective.id_us',$id)
                 ->get();
     	foreach ($st as $key) {
-    	// 	# code...
-    	// 	//dd($stt);
     		if($request->has($key->id))
     		{
                 if($key->isOn==0){
@@ -96,7 +93,6 @@ class HomeController extends Controller{
                 }
     		}
     		else{
-    		    //$turn=DB::table('thiet_bi') ->where('id',$key->id)->get();
                 if($key->isOn==1){
                     $this->TurnOff($key->id);
                     DB::table('thiet_bi') ->where('id',$key->id)->update(['isOn'=>0]);

@@ -47,48 +47,15 @@
                     </label> 
                 </td>
                 <td> <?php 
-                if($value->id==1){
-
-                    // shell_exec("ssh -p 2222 root@127.0.0.1");
-                    $name=shell_exec("who");
-                    
-                    $array=explode("\n", $name);
-                    
-                    $n=count($array);
-                    //echo $n;
-                    for($i=0; $i<$n; $i++){
-                        $array[$i]=explode(' ', $array[$i]);
-                        //dd($array[$i]);
-                    }
-                    for($i=0; $i<count($array); $i++){
-                        for($j=$i+1; $j<count($array); $j++){
-                            if(($array[$i][0]===$array[$j][0])&&($array[$i][count($array[$i])-1]===$array[$j][count($array[$j])-1])) {
-                                $array[$i][0]="";
-                                $n--;
-                            }
-                        }
-                    }
-                    echo $n-1;
-                    echo "<br>";
-                    for($i=0; $i<count($array); $i++){
-                        if($array[$i][0]===""){}else {echo $array[$i][0];echo $array[$i][count($array[$i])-1] ; echo "<br>";}
-                    }
-
-                }
-                else{
                     if($value->comment!=NULL){
-                        //dd(shell_exec("ssh -p 2222 root@127.0.0.1 -t who"));
-                    //shell_exec("exit");
                     $ip=$value->comment;
                     $name=shell_exec("ssh $ip -t who");
                     
                     $array=explode("\n", $name);
                     
                     $n=count($array);
-                    //echo $n;
                     for($i=0; $i<$n; $i++){
                         $array[$i]=explode(' ', $array[$i]);
-                        //dd($array[$i]);
                     }
                     for($i=0; $i<count($array); $i++){
                         for($j=$i+1; $j<count($array); $j++){
@@ -104,9 +71,6 @@
                         if($array[$i][0]===""){}else {echo $array[$i][0];echo $array[$i][count($array[$i])-1] ; echo "<br>";}
                     }
                     }
-
-                    
-                }
                 ?>   
                 </td>
             </tr>

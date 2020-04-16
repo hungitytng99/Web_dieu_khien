@@ -17,7 +17,6 @@ use Cookie;
 
     public function connective()
     {
-        //$cn = DB::table('connective')->orderBy('id_us', 'asc')->get();
         if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         $user = DB::table('users')->orderBy('id', 'asc')->get();
@@ -52,7 +51,6 @@ use Cookie;
                 ->get();
         $user = DB::table('users')->orderBy('id', 'asc')->get();
         $st = DB::table('thiet_bi')->orderBy('id', 'asc')->get();
-        //return view('/connective',compact('user', 'st', 'cn'))->with('success', 'Add success.');
         return redirect()->action('ConnectiveController@connective',['user'=>$user, 'st'=>$st, 'cn'=>$cn])->with('success', 'Add success.');
 
     }
