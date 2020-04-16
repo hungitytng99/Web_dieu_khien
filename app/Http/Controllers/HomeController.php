@@ -90,10 +90,17 @@ class HomeController extends Controller{
     	// 	//dd($stt);
     		if($request->has($key->id))
     		{
-    			DB::table('thiet_bi') ->where('id',$key->id)->update(['isOn'=>1]);
+                if($key->isOn==0){
+                    $this->TurnOn($key->id);
+                    DB::table('thiet_bi') ->where('id',$key->id)->update(['isOn'=>1]);
+                }
     		}
     		else{
-    		    DB::table('thiet_bi')->where('id',$key->id)->update(['isOn'=>0]);
+    		    //$turn=DB::table('thiet_bi') ->where('id',$key->id)->get();
+                if($key->isOn==1){
+                    $this->TurnOff($key->id);
+                    DB::table('thiet_bi') ->where('id',$key->id)->update(['isOn'=>0]);
+                }
     		}
     	}
     	
@@ -118,5 +125,12 @@ class HomeController extends Controller{
     	
         return redirect()->action('HomeController@homead')->with('success', 'The change has been saved!!!');
     	
+    }
+
+    public function TurnOn($id){
+
+    }
+    public function TurnOff($id){
+
     }
 }

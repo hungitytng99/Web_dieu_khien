@@ -86,11 +86,12 @@
 
                     
                 }
-                if($value->id==2){
-
-                    //dd(shell_exec("ssh -p 2222 root@127.0.0.1 -t who"));
+                else{
+                    if($value->comment!=NULL){
+                        //dd(shell_exec("ssh -p 2222 root@127.0.0.1 -t who"));
                     //shell_exec("exit");
-                    $name=shell_exec("ssh -p 2222 root@127.0.0.1 -t who");
+                    $ip=$value->comment;
+                    $name=shell_exec("ssh $ip -t who");
                     
                     $array=explode("\n", $name);
                     
@@ -113,6 +114,9 @@
                     for($i=0; $i<count($array); $i++){
                         if($array[$i][0]===""){}else {echo $array[$i][0];echo $array[$i][count($array[$i])-1] ; echo "<br>";}
                     }
+                    }
+
+                    
                 }
                 
                 ?>   
