@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-md-112" style="margin-top: 20px; color: darkred;">
                   <div class="col-md-4">
-                    comment
+                    username&&ip
                   </div>
                   <div class="col-md-8">
                     <input type="text" name="comment" class="form-control" required>

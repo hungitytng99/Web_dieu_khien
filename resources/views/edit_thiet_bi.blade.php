@@ -20,7 +20,7 @@
     </p>
 
     <p>
-        <label for="comment">Comment</label><br>
+        <label for="comment">username&&ip</label><br>
         <input type="text" name="comment" value="{{ $value->comment }}">
     </p>
         @if (session('error'))
