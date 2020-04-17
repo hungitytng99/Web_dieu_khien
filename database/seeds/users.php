@@ -14,13 +14,11 @@ class users extends Seeder
         //
         DB::table('users')->insert([
  
-		'username' => 'huongdoll',
+		'username' => 'admin',
 		 
 		'password' => '11091999',
 		 
 		'comment'=>'0'
-
-		'on'=>'0'
 		 
 		]);
     }
