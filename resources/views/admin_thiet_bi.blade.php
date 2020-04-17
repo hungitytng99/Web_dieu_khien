@@ -77,10 +77,10 @@
                 </div>
                 <div class="col-md-112" style="margin-top: 20px; color: darkred;">
                   <div class="col-md-4">
-                    username&&ip
+                    ip address
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="comment" class="form-control" required>
+                    <input type="text" name="ip_address" class="form-control" required>
                   </div>
                 </div>
                 <div class="col-md-12" style="margin-top: 10px; color: darkred;">
@@ -109,7 +109,7 @@
             	<th>ID</th>
             	<th>Name</th>
             	<th>isOn</th>
-            	<th>comment</th>
+            	<th>ip_address</th>
             	<th>Tools</th>
         	</tr>
     	</thead>
@@ -119,7 +119,7 @@
                 <td><?php echo $value->id;?> </td>
                 <td><?php echo $value->name;?> </td>
                 <td><?php echo $value->isOn;?> </td>
-                <td><?php echo $value->comment;?> </td>
+                <td><?php echo $value->ip_address;?> </td>
                 <td> <a href="/edittb/{{$value->id}}">Edit</a>  <a href="/deletetb/{{$value->id}}">Delete</a></td>
             </tr>
               <?php } ?>

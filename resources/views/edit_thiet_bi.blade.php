@@ -20,8 +20,8 @@
     </p>
 
     <p>
-        <label for="comment">username&&ip</label><br>
-        <input type="text" name="comment" value="{{ $value->comment }}">
+        <label for="ip_address">ip address</label><br>
+        <input type="text" name="ip_address" value="{{ $value->ip_address }}">
     </p>
         @if (session('error'))
           <div class="alert alert-danger" role="alert" style="color:Tomato">

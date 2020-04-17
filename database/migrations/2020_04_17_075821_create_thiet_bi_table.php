@@ -20,7 +20,7 @@ class CreateThietBiTable extends Migration
  
             $table->integer('isOn');
  
-            $table->string('comment')->nullable();
+            $table->string('ip_address')->nullable();
 
             $table->string('login')->nullable();
 

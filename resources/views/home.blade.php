@@ -47,8 +47,8 @@
                     </label> 
                 </td>
                 <td> <?php 
-                    if($value->comment!=NULL){
-                    $ip=$value->comment;
+                    if($value->ip_address!=NULL){
+                    $ip=$value->ip_address;
                     $name=shell_exec("ssh $ip -t who");
                     
                     $array=explode("\n", $name);

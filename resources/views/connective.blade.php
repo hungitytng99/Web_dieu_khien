@@ -154,7 +154,7 @@
             	<th>ID</th>
             	<th>Name</th>
             	<th>isOn</th>
-            	<th>comment</th>
+            	<th>ip_address</th>
             	
         	</tr>
     	</thead>
@@ -164,7 +164,7 @@
                 <td><?php echo $value->id;?> </td>
                 <td><?php echo $value->name;?> </td>
                 <td><?php echo $value->isOn;?> </td>
-                <td><?php echo $value->comment;?> </td>
+                <td><?php echo $value->ip_address;?> </td>
                 
             </tr>
               <?php } ?>
