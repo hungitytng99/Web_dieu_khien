@@ -87,7 +87,7 @@
     <input type="submit" value="Change" style="margin-top: 20px;color: darkred;font-family: courier;"> </input>
     @csrf
     </form>
-    <div class="pull-right" style="margin-top: 50px;font-family: courier;"><a class="btn btn-primary" href="http://localhost:8000/logout/">LOGOUT</a></div>
+    <div class="pull-right" style="margin-top: 50px;font-family: courier;"><a class="btn btn-primary" href="/logout">LOGOUT</a></div>
 
 </body>
 <!-- checked -->

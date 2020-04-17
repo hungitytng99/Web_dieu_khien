@@ -46,13 +46,9 @@
     }
 </style>
 <body>
-    <div class="pull-right" style="margin-top: 30px;font-family: courier; font-size: 150%;">
-        <a class="btn btn-primary" href="http://localhost:8000/homead">CONTROL PAGE</a>
-        <a class="btn btn-primary" href="http://localhost:8000/admin_user">USER MANAGEMENT</a>
-        <a class="btn btn-primary" href="http://localhost:8000/admin_thiet_bi"> DEVICE MANAGEMENT </a>
-        <a class="btn btn-primary" href="http://localhost:8000/connective">CONNECTIVE MANAGEMENT</a>
-    </div>
-    <div class="pull-right" style="margin-top: 5px;font-family: courier;font-size: 75%;"><a class="btn btn-primary" href="http://localhost:8000/logout">LOGOUT</a></div>
+    <html>
+    @include('title')
+    </html>
     <h1>USER MANAGEMENT</h1>
     
     <div class="col-md-6 col-xs-offset-3" style="margin-top:50px;">
@@ -119,7 +115,7 @@
                 <td><?php echo $value->id;?> </td>
                 <td><?php echo $value->username;?> </td>
                 <td><?php echo $value->comment;?> </td>
-                <td> <a href="http://localhost:8000/editus/{{$value->id}}">Edit</a>  <a href="http://localhost:8000/deleteus/{{$value->id}}">Delete</a></td>
+                <td> <a href="/editus/{{$value->id}}">Edit</a>  <a href="/deleteus/{{$value->id}}">Delete</a></td>
             </tr>
               <?php } ?>
         </tbody>
