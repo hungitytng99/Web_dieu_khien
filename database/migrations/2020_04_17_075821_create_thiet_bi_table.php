@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateThietBiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('thiet_bi', function (Blueprint $table) {
             $table->increments('id');
  
-            $table->string('username');
+            $table->string('name');
  
-            $table->string('password');
+            $table->integer('isOn');
  
             $table->string('comment');
 
-            $table->integer('on');
+            $table->string('login');
 
             $table->timestamps();
         });
@@ -35,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('thiet_bi');
     }
 }
