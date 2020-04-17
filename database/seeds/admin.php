@@ -16,7 +16,7 @@ class admin extends Seeder
  
 		'username' => 'admin',
 		 
-		'password' => '11091999',
+		'password' => Hash::make('11091999'),
 		 
 		'comment'=>'0'
 		 

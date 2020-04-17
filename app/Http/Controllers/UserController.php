@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-//use App\Http\Controllers\Cookie;
+use Illuminate\Support\Facades\Hash;
 use Session;
 use Cookie;
 use \DB;
@@ -18,12 +18,14 @@ public function __construct() {
 public function postlogin(Request $request){
         $username=$request->username;
         $password=$request->password;
+        if(empty($username)||empty($password))
+            return redirect()->action('LoginController@login')->with('error', 'Login failed! User account or password not null'); 
         $admin=DB::table('admin') 
             ->where('username','like',$username)
             ->get();
         foreach ($admin as $value) {
             # code...
-            if($value->password==$password){
+            if(Hash::check($password, $value->password)){
                 $id='admin';
                 //Session::put('login', true);
                 Session::push('user.id', $id);
@@ -40,9 +42,7 @@ public function postlogin(Request $request){
         	->get();
         foreach ($user as $value) {
         	# code...
-        	if($value->password==$password){
-        		
-            
+        	if(Hash::check($password, $value->password)){
 
                 $st = DB::table('thiet_bi')
                 ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')

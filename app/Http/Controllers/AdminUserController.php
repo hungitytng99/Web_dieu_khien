@@ -6,6 +6,7 @@
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Hash;
     use Session;
     use Cookie;
 
@@ -45,7 +46,7 @@
                 ->where('id',$id)
                 ->update(array(
                     'username'=> $request->username,
-                    'password'=> $request->password,
+                    'password'=> Hash::make($request->password),
                     'comment'=> $request->comment
                 ));
         return redirect()->action('AdminUserController@index')->with('success', 'Update success.');
@@ -71,7 +72,7 @@
             return redirect()->action('LoginController@login');}
         DB::table('users')
         ->insert(
-            [ 'username'=>$request->username, 'password'=>$request->password, 'comment'=>$request->comment]);
+            [ 'username'=>$request->username, 'password'=>Hash::make($request->password), 'comment'=>$request->comment]);
         return redirect()->action('AdminUserController@index')->with('success', 'Add success.');
 
     }
