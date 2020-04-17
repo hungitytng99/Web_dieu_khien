@@ -64,12 +64,14 @@ public function postlogin(Request $request){
 }
 
 public function logout(){
-        
-    $id=-1;
+    
+    $id=Cookie::get('ID');  
+    
     Session::pull('user.id', $id);
     Cookie::queue("login", false, 365*24*60);
     // dd(Session::get('login'));
-    Cookie::queue("ID", $id, 365*24*60);
+    Cookie::forget('ID');
+    Cookie::queue("ID", null, 365*24*60);
     //dd(Session::get('ID'));
     return redirect()->action('LoginController@login');
 }

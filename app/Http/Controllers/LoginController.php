@@ -5,6 +5,7 @@ use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Cache;
 use Session;
 use Cookie;
 //use App\Http\Controllers\Cookie;
@@ -12,7 +13,7 @@ use Cookie;
 class LoginController extends Controller{   
     public function login() {
     	//dd(Cookie::get('ID'));
-    	if(Cookie::get('ID')==-1) return view('login');
+    	if(Cookie::get('ID')==null) return view('login');
     	if(Cookie::get('ID')=='admin'){
     		$id=0;
             Session::put('login', true);
