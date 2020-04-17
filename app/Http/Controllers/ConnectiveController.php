@@ -17,7 +17,7 @@ use Cookie;
 
     public function connective()
     {
-        if (Cookie::get('ID')!=0){
+        if (Cookie::get('ID')!='admin'){
             return redirect()->action('LoginController@login');}
         $user = DB::table('users')->orderBy('id', 'asc')->get();
         $st = DB::table('thiet_bi')->orderBy('id', 'asc')->get();
@@ -29,7 +29,7 @@ use Cookie;
         return view('/connective',compact('user', 'st', 'cn'));
     }
     public function add(Request $request){
-        if (Cookie::get('ID')!=0){
+        if (Cookie::get('ID')!='admin'){
             return redirect()->action('LoginController@login');}
 
         $users = DB::table('users')->find($request->idus);
@@ -56,7 +56,7 @@ use Cookie;
     }
     public function delete($id)
     {
-        if (Cookie::get('ID')!=0){
+        if (Cookie::get('ID')!='admin'){
             return redirect()->action('LoginController@login');}
         $value = DB::table('connective')
                 ->where('id_cn',$id)

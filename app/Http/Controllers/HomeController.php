@@ -29,7 +29,7 @@ class HomeController extends Controller{
      }
 
     public function homead(){
-        if (Cookie::get('ID')!=0){
+        if (Cookie::get('ID')!='admin'){
             return redirect()->action('LoginController@login');}
     	
         $st = DB::table('thiet_bi')
@@ -68,7 +68,7 @@ class HomeController extends Controller{
     }
     public function changead(Request $request)
     {
-        if (Cookie::get('ID')!=0){
+        if (Cookie::get('ID')!='admin'){
             return redirect()->action('LoginController@login');}
     	$stt = DB::table('thiet_bi')->get();
     	foreach ($stt as $key) {
