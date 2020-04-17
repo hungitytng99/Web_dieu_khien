@@ -73,7 +73,7 @@
                     password
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="password" class="form-control" required>
+                    <input type="password" name="password" class="form-control" required>
                   </div>
                 </div>
                 <div class="col-md-112" style="margin-top: 20px; color: darkred;">

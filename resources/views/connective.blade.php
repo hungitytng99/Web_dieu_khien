@@ -128,7 +128,7 @@
         	<tr>
             	<th>ID</th>
             	<th>username</th>
-            	<th>password</th>
+            	
             	<th>comment</th>
             	
         	</tr>
@@ -138,7 +138,7 @@
             <tr>
                 <td><?php echo $value->id;?> </td>
                 <td><?php echo $value->username;?> </td>
-                <td><?php echo $value->password;?> </td>
+                
                 <td><?php echo $value->comment;?> </td>
                 
             </tr>

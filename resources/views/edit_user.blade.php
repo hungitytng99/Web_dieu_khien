@@ -16,7 +16,7 @@
 
     <p>
         <label for="email">Password</label><br>
-        <input type="text" name="password" value="{{ $value->password }}">
+        <input type="password" name="password" value="{{ $value->password }}">
     </p>
 
     <p>
