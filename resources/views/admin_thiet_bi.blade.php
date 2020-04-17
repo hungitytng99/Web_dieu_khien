@@ -77,6 +77,14 @@
                 </div>
                 <div class="col-md-112" style="margin-top: 20px; color: darkred;">
                   <div class="col-md-4">
+                    user
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="user" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-md-112" style="margin-top: 20px; color: darkred;">
+                  <div class="col-md-4">
                     ip address
                   </div>
                   <div class="col-md-8">
@@ -109,6 +117,7 @@
             	<th>ID</th>
             	<th>Name</th>
             	<th>isOn</th>
+              <th>user</th>
             	<th>ip_address</th>
             	<th>Tools</th>
         	</tr>
@@ -119,6 +128,7 @@
                 <td><?php echo $value->id;?> </td>
                 <td><?php echo $value->name;?> </td>
                 <td><?php echo $value->isOn;?> </td>
+                <td><?php echo $value->user;?> </td>
                 <td><?php echo $value->ip_address;?> </td>
                 <td> <a href="/edittb/{{$value->id}}">Edit</a>  <a href="/deletetb/{{$value->id}}">Delete</a></td>
             </tr>

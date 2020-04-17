@@ -50,9 +50,9 @@
                 </td>
                 <td> <?php 
                     if($value->ip_address!=NULL){
-                    
+                    $user=$value->user;
                     $ip=$value->ip_address;
-                    $name=shell_exec("ssh $ip -t who");
+                    $name=shell_exec("ssh $user@$ip -t who");
                     
                     $array=explode("\n", $name);
                     

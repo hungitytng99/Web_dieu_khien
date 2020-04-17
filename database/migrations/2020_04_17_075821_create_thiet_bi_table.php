@@ -19,6 +19,8 @@ class CreateThietBiTable extends Migration
             $table->string('name');
  
             $table->integer('isOn');
+
+            $table->string('user')->nullable();
  
             $table->string('ip_address')->nullable();
 

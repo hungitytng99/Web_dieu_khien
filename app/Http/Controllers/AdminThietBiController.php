@@ -48,6 +48,7 @@
                 ->update(array(
                     'name'=> $request->name,
                     'isOn'=> $request->isOn,
+                    'user'=>$request->user,
                     'ip_address'=> $request->ip_address
                 ));
         return redirect()->action('AdminThietBiController@index')->with('success', 'Update success.');
@@ -73,7 +74,7 @@
         if(($request->isOn=='0')||($request->isOn=='1')){
         DB::table('thiet_bi')
         ->insert(
-            [ 'name'=>$request->name, 'isOn'=>$request->isOn, 'ip_address'=>$request->ip_address]);
+            [ 'name'=>$request->name, 'isOn'=>$request->isOn,'user'=>$request->user, 'ip_address'=>$request->ip_address]);
         return redirect()->action('AdminThietBiController@index')->with('success', 'Add success.');        
             
         }
