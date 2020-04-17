@@ -20,9 +20,9 @@ class CreateThietBiTable extends Migration
  
             $table->integer('isOn');
  
-            $table->string('comment');
+            $table->string('comment')->nullable();
 
-            $table->string('login');
+            $table->string('login')->nullable();
 
             $table->timestamps();
         });

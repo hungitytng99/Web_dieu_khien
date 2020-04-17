@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
  
             $table->string('password');
  
-            $table->string('comment');
+            $table->string('comment')->nullable();
 
-            $table->integer('on');
+            $table->integer('on')->nullable();
 
             $table->timestamps();
         });

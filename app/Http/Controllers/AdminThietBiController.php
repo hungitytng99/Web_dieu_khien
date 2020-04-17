@@ -68,7 +68,7 @@
     }
     public function add(Request $request)
     {
-        if (CCookie::get('ID')!=0){
+        if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
         if(($request->isOn=='0')||($request->isOn=='1')){
         DB::table('thiet_bi')

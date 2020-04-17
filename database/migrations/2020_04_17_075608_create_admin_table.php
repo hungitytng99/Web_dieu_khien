@@ -20,7 +20,7 @@ class CreateAdminTable extends Migration
  
             $table->string('password');
  
-            $table->string('comment');
+            $table->string('comment')->nullable();
 
             $table->timestamps();
         });
