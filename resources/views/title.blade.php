@@ -32,7 +32,7 @@
         <a class="btn btn-primary" href="/admin_thiet_bi"> DEVICE MANAGEMENT </a>
         <a class="btn btn-primary" href="/connective">CONNECTIVE MANAGEMENT</a>
     </div>
-    <div class="pull-right" style="margin-top: 5px;font-family: courier;font-size: 75%;"><a class="btn btn-primary" href="http://localhost:8000/logout">LOGOUT</a></div>
+    <div class="pull-right" style="margin-top: 5px;font-family: courier;font-size: 75%;"><a class="btn btn-primary" href="/logout">LOGOUT</a></div>
 
 </body>
 </html>

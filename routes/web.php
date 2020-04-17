@@ -11,8 +11,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/login', 'LoginController@login');
-Route::post('/login', 'UserController@postlogin');
+Route::get('/', 'LoginController@login');
+Route::post('/', 'UserController@postlogin');
 // Route::get('/admin', 'LoginController@admin');
 Route::get('/home/{id}', 'HomeController@home');
 Route::get('/homead', 'HomeController@homead');
