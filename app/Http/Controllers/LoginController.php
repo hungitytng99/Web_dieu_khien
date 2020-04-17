@@ -13,7 +13,7 @@ class LoginController extends Controller{
     public function login() {
     	//dd(Cookie::get('ID'));
     	if(Cookie::get('ID')==-1) return view('login');
-    	if(Cookie::get('ID')==0){
+    	if(Cookie::get('ID')=='admin'){
     		$id=0;
             Session::put('login', true);
             Session::push('user.id', $id);

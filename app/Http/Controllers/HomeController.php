@@ -19,25 +19,6 @@ class HomeController extends Controller{
     
         if (Cookie::get('ID')!=$id){
             return redirect()->action('LoginController@login');}
-        DB::table('users')->update(['on'=>0]);
-        $list_id =Session::get('user.id');
-        foreach ($list_id as $key => $value) {
-            DB::table('users')->where('id',$value)->update(['on'=>1]);
-        }
-
-        $tb=DB::table('thiet_bi')->get();
-        foreach ($tb as $value) {
-            # code...
-            $st = DB::table('connective')
-                ->join('thiet_bi', 'thiet_bi.id', '=', 'connective.id_tb')
-                ->join('users', 'users.id', '=', 'connective.id_us')
-                ->where('connective.id_tb',$value->id)
-                ->where('users.on',1)
-                ->where('thiet_bi.isOn',1)
-                ->count();
-            DB::table('thiet_bi') ->where('id',$value->id)->update(['login'=>$st]);
-        }
-
         
         $st = DB::table('thiet_bi')
                 ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
@@ -50,25 +31,7 @@ class HomeController extends Controller{
     public function homead(){
         if (Cookie::get('ID')!=0){
             return redirect()->action('LoginController@login');}
-    	DB::table('users')->update(['on'=>0]);
-        $list_id =Session::get('user.id');
-        foreach ($list_id as $key => $value) {
-            DB::table('users')->where('id',$value)->update(['on'=>1]);
-        }
-
-        $tb=DB::table('thiet_bi')->get();
-        foreach ($tb as $value) {
-            # code...
-            $st = DB::table('connective')
-                ->join('thiet_bi', 'thiet_bi.id', '=', 'connective.id_tb')
-                ->join('users', 'users.id', '=', 'connective.id_us')
-                ->where('connective.id_tb',$value->id)
-                ->where('users.on',1)
-                ->where('thiet_bi.isOn',1)
-                ->count();
-            
-            DB::table('thiet_bi') ->where('id',$value->id)->update(['login'=>$st]);
-        }
+    	
         $st = DB::table('thiet_bi')
         ->orderBy('id', 'asc')
         ->get();

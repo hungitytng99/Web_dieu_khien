@@ -24,7 +24,7 @@ public function postlogin(Request $request){
         foreach ($admin as $value) {
             # code...
             if($value->password==$password){
-                $id=0;
+                $id='admin';
                 //Session::put('login', true);
                 Session::push('user.id', $id);
                 Cookie::queue("ID", $id, 365*24*60);
@@ -64,18 +64,7 @@ public function postlogin(Request $request){
 }
 
 public function logout(){
-        $id=Cookie::get('ID');
-        $st = DB::table('thiet_bi')
-                ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
-                ->where('connective.id_us',$id)
-                ->get();
-        foreach ($st as $value){
-            if($value->isOn=='1'){
-                $count=$value->login;
-                $count-=1;
-                DB::table('thiet_bi') ->where('id',$value->id)->update(['login'=>$count]);
-            }
-        }
+        
     $id=-1;
     Session::pull('user.id', $id);
     Cookie::queue("login", false, 365*24*60);
