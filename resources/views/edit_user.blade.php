@@ -10,19 +10,39 @@
     @csrf
     <input type="hidden" name="id" value="{{ $value->id }}">
     <p>
-        <label for="username">Username</label><br>
+        <label for="username">User name</label><br>
         <input type="text" name="username" value="{{ $value->username }}">
     </p>
 
     <p>
-        <label for="email">Password</label><br>
-        <input type="password" name="password" value="{{ $value->password }}">
+        <label for="fullname">Full name</label><br>
+        <input type="text" name="fullname" value="{{ $value->fullname }}">
     </p>
 
     <p>
-        <label for="comment">Comment</label><br>
-        <input type="text" name="comment" value="{{ $value->comment }}">
+        <label for="email">Email</label><br>
+        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $value->email }}" required autocomplete="email" autofocus placeholder="Email" class="form-control" required>
+                    
+
+          @error('email')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
     </p>
+
+    <p>
+        <label for="password">Password</label><br>
+        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" >
+
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+    </p>
+
+    
         @if (session('error'))
           <div class="alert alert-danger" role="alert" style="color:Tomato">
               {{ session('error') }}

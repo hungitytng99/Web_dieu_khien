@@ -13,6 +13,12 @@
 */
 Route::get('/', 'LoginController@login');
 Route::post('/', 'UserController@postlogin');
+Route::get('/index/{id}', 'LoginController@index');
+Route::post('/index/{id}', 'LoginController@postindex');
+
+Route::get('/myregister', 'LoginController@register');
+// Route::post('/myregister', 'UserController@register');
+Route::post('/myregister', 'Auth\RegisterController@register');
 // Route::get('/admin', 'LoginController@admin');
 Route::get('/home/{id}', 'HomeController@home');
 Route::get('/homead', 'HomeController@homead');
@@ -32,7 +38,13 @@ Route::get('/connective','ConnectiveController@connective');
 Route::post('/addcn','ConnectiveController@add');
 Route::get('/deletecn/{id}', 'ConnectiveController@delete');
 Route::get('/logout','UserController@logout' );
+Auth::routes();
+//Route::get('/complete-registration', 'UserController@completeRegistration');
+Route::get('/complete-registration', 'Auth\RegisterController@completeRegistration');
 
 ?>
+
+
+
 
 

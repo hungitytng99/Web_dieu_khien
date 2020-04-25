@@ -38,7 +38,7 @@
         if (Cookie::get('ID')!='admin'){
             return redirect()->action('LoginController@login');}
         //$value=$request->all();
-        if(($request->name==null)||($request->isOn==null)){
+        if($request->name==null){
         
         return redirect()->action('AdminThietBiController@edit',['id'=>$id])->with('error', 'Name and status may not be blank.');    
         }
@@ -47,7 +47,7 @@
                 ->where('id',$id)
                 ->update(array(
                     'name'=> $request->name,
-                    'isOn'=> $request->isOn,
+                    'isOn'=> '0',
                     'user'=>$request->user,
                     'ip_address'=> $request->ip_address
                 ));
@@ -71,15 +71,15 @@
     {
         if (Cookie::get('ID')!='admin'){
             return redirect()->action('LoginController@login');}
-        if(($request->isOn=='0')||($request->isOn=='1')){
+        if($request->name!=null){
         DB::table('thiet_bi')
         ->insert(
-            [ 'name'=>$request->name, 'isOn'=>$request->isOn,'user'=>$request->user, 'ip_address'=>$request->ip_address]);
+            [ 'name'=>$request->name, 'isOn'=>'0','user'=>$request->user, 'ip_address'=>$request->ip_address]);
         return redirect()->action('AdminThietBiController@index')->with('success', 'Add success.');        
             
         }
         
-            return redirect()->action('AdminThietBiController@index')->with('error', 'Add fail.The state must be either 1 or 0.');
+            return redirect()->action('AdminThietBiController@index')->with('error', 'Add fail.Name not null');
         
 
 

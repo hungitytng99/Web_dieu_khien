@@ -15,10 +15,6 @@
     </p>
 
     <p>
-        <label for="ison">Is On</label><br>
-        <input type="text" name="isOn" value="{{ $value->isOn }}">
-    </p>
-    <p>
         <label for="user">user</label><br>
         <input type="text" name="user" value="{{ $value->user }}">
     </p>

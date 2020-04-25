@@ -127,9 +127,9 @@
     	<thead>
         	<tr>
             	<th>ID</th>
-            	<th>username</th>
+            	<th>Full name</th>
             	
-            	<th>comment</th>
+            	<th>Email</th>
             	
         	</tr>
     	</thead>
@@ -137,9 +137,9 @@
             <?php foreach ($user as $value) {?>
             <tr>
                 <td><?php echo $value->id;?> </td>
-                <td><?php echo $value->username;?> </td>
+                <td><?php echo $value->fullname;?> </td>
                 
-                <td><?php echo $value->comment;?> </td>
+                <td><?php echo $value->email;?> </td>
                 
             </tr>
               <?php } ?>

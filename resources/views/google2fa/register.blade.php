@@ -2,10 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login controller</title>
+  <title>Register controller</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->  
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!--===============================================================================================-->  
   <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -35,37 +34,23 @@
 
       <div class="wrap-login100 p-t-30 p-b-50">
         <span class="login100-form-title p-b-41">
-          Login
+          Set up Google Authenticator
         </span>
         
-
-        <form class="login100-form validate-form p-b-33 p-t-5" action="" method="post">
-
-
-          <div class="wrap-input100 validate-input" data-validate = "Enter username">
-            <input class="input100" type="text" name="username" placeholder="User name">
-            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
-          </div>
-
-          <div class="wrap-input100 validate-input" data-validate="Enter password">
-            <input class="input100" type="password" name="password" placeholder="Password">
-            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
-          </div>
-          <div class="pull-left" style="margin-top: 20px;font-family: courier; font-size: 150%;">
-            <a class="btn btn-primary" style="font-size: 20px;"  href="/myregister">     REGISTER</a>
-          </div>
-        @if (session('error'))
-          <div class="pull-left" role="alert" style="color:Tomato">
-              {{ session('error') }}
-          </div>
-        @endif
-          <div class="container-login100-form-btn m-t-32">
-            <button class="login100-form-btn">
-              Login
-            </button>
-          </div>
+            <div class="panel-body" style="text-align: center;">
+                    <p style="color: white">Set up your two factor authentication by scanning the barcode below. Alternatively, you can use the code {{ $secret }}</p>
+                    <div>
+                        <img src="{{ $QR_Image }}">
+                    </div>
+                    @if (!@$reauthenticating) {{-- add this line --}}
+                        <p style="color: white">Set up your two factor authentication by scanning the barcode below. Alternatively, you can use the code {{ $secret }}</p>>You must set up your Google Authenticator app before continuing. You will be unable to login otherwise</p>
+                            <div class="container-login100-form-btn m-t-32">
+                                <a href="/complete-registration"><button class="login100-form-btn">Complete Registration</button></a>
+                            </div>
+                    @endif {{-- and this line --}}
+            </div>
+          
           @csrf
-        </form>
       </div>
     </div>
   </div>
@@ -91,4 +76,36 @@
   <script src="js/main.js"></script>
 
 </body>
-</html>
+</html> 
+
+
+
+
+
+
+
+<!-- btn-primary
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Set up Google Authenticator</div>
+
+                <div class="panel-body" style="text-align: center;">
+                    <p>Set up your two factor authentication by scanning the barcode below. Alternatively, you can use the code {{ $secret }}</p>
+                    <div>
+                        <img src="{{ $QR_Image }}">
+                    </div>
+                    @if (!@$reauthenticating) {{-- add this line --}}
+                        <p>You must set up your Google Authenticator app before continuing. You will be unable to login otherwise</p>
+                        <div>
+                            <a href="/complete-registration"><button class="login100-form-btn">Complete Registration</button></a>
+                        </div>
+                    @endif {{-- and this line --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

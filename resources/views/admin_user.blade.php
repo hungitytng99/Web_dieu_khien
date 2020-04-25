@@ -65,7 +65,30 @@
                     username
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="username" class="form-control" required>
+                    <input type="text" name="username" class="form-control" autofocus placeholder="User name" required >
+                  </div>
+                </div>
+                <div class="col-md-112" style="margin-top: 20px; color: darkred;">
+                  <div class="col-md-4">
+                    full name
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="fullname" class="form-control" autofocus placeholder="Full name" required>
+                  </div>
+                </div>
+                <div class="col-md-112" style="margin-top: 20px; color: darkred;">
+                  <div class="col-md-4">
+                    email
+                  </div>
+                  <div class="col-md-8">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required autocomplete="email" autofocus placeholder="Email" class="form-control" required>
+
+
+                      @error('email')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
                   </div>
                 </div>
                 <div class="col-md-112" style="margin-top: 20px; color: darkred;">
@@ -73,17 +96,16 @@
                     password
                   </div>
                   <div class="col-md-8">
-                    <input type="password" name="password" class="form-control" required>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autofocus placeholder="Password" class="form-control" required>
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                   </div>
                 </div>
-                <div class="col-md-112" style="margin-top: 20px; color: darkred;">
-                  <div class="col-md-4">
-                    comment
-                  </div>
-                  <div class="col-md-8">
-                    <input type="text" name="comment" class="form-control" required>
-                  </div>
-                </div>
+                
                 <div class="col-md-12" style="margin-top: 10px; color: darkred;">
                   <div class="col-md-3 col-xs-offset-4">
                   <input type="submit" class="btn btn-info" value="ADD">
@@ -104,8 +126,8 @@
     	<thead>
         	<tr>
             	<th>ID</th>
-            	<th>username</th>
-            	<th>comment</th>
+            	<th>Full name</th>
+            	<th>Email</th>
             	<th>Tools</th>
         	</tr>
     	</thead>
@@ -113,8 +135,8 @@
             <?php foreach ($user as $value) {?>
             <tr>
                 <td><?php echo $value->id;?> </td>
-                <td><?php echo $value->username;?> </td>
-                <td><?php echo $value->comment;?> </td>
+                <td><?php echo $value->fullname;?> </td>
+                <td><?php echo $value->email;?> </td>
                 <td> <a href="/editus/{{$value->id}}">Edit</a>  <a href="/deleteus/{{$value->id}}">Delete</a></td>
             </tr>
               <?php } ?>

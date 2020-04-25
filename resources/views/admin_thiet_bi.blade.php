@@ -64,23 +64,16 @@
                     name
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="name" class="form-control" required>
+                    <input type="text" name="name" class="form-control" autofocus placeholder="Device name" required>
                   </div>
                 </div>
-                <div class="col-md-112" style="margin-top: 20px; color: darkred;">
-                  <div class="col-md-4">
-                    IsOn
-                  </div>
-                  <div class="col-md-8">
-                    <input type="text" name="isOn" class="form-control" required>
-                  </div>
-                </div>
+                
                 <div class="col-md-112" style="margin-top: 20px; color: darkred;">
                   <div class="col-md-4">
                     user
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="user" class="form-control" required>
+                    <input type="text" name="user" class="form-control" autofocus placeholder="User name" required>
                   </div>
                 </div>
                 <div class="col-md-112" style="margin-top: 20px; color: darkred;">
@@ -88,7 +81,7 @@
                     ip address
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="ip_address" class="form-control" required>
+                    <input type="text" name="ip_address" class="form-control" autofocus placeholder="ip" required>
                   </div>
                 </div>
                 <div class="col-md-12" style="margin-top: 10px; color: darkred;">
