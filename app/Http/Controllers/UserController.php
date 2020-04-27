@@ -30,9 +30,10 @@ public function postlogin(Request $request){
         foreach ($admin as $value) {
             # code...
             if(Hash::check($password, $value->password)){
-                $id='admin';
+                $id=$value->id;
                 //Session::put('login', true);
-                Session::push('user.id', $id);
+                //Session::push('user.id', $id);
+                Cookie::queue("table", 'admin', 365*24*60);
                 Cookie::queue("ID", $id, 365*24*60);
                 //Cookie::queue("login", true, 365*24*60);
                 
@@ -48,16 +49,19 @@ public function postlogin(Request $request){
         	# code...
         	if(Hash::check($password, $value->password)){
 
-                $st = DB::table('thiet_bi')
-                ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
-                ->where('connective.id_us',$value->id)
-                ->get();
+                
                 $id=$value->id;
-                //Session::put('login', true);
-                // Session::push('user.id', $id);
-                // Cookie::queue("ID", $id, 365*24*60);
-                //Cookie::queue("login", true, 365*24*60);
-                return redirect()->action('LoginController@index', ['id' => $id]);    
+                if($value->google2fa_secret!=NULL){
+                    // return view('login',compact('id'));
+                    return redirect()->action('UserController@one_time_password', ['id' => $id]);
+
+                } else {
+                    //Session::push('user.id', $id);
+                    Cookie::queue("table", 'user', 365*24*60);
+                    Cookie::queue("ID", $id, 365*24*60);
+                    return redirect()->action('HomeController@home', ['id' => $id]);
+                }
+                //return redirect()->action('LoginController@index', ['id' => $id]);    
         	}
         	
         }
@@ -65,6 +69,34 @@ public function postlogin(Request $request){
 
     return redirect()->action('LoginController@login')->with('error', 'Login failed! User account or password incorrect.');   
                
+}
+
+public function one_time_password($id){
+        //return view('login',compact('id'));
+        return view('google2fa.googlef2a_index',compact('id'));
+
+    }
+
+public function post_one_time_password(Request $request,$id){
+    $key=$request->one_time_password;
+    
+    $user=DB::table('users') 
+        ->where('id',$id)
+        ->first();
+    //dd($user->google2fa_secret);
+    $google2fa = app('pragmarx.google2fa');
+    $valid = $google2fa->verifyKey($user->google2fa_secret, $key);
+    //dd($valid);
+    if($valid==true){
+        Session::push('user.id', $id);
+        Cookie::queue("ID", $id, 365*24*60);
+        return redirect()->action('HomeController@home', ['id' => $id]);
+    }else{
+        //dd("run2");
+        return redirect()->action('LoginController@login')->with('error', 'Login failed! One time password incorrect.');
+    }
+    
+
 }
 
 public function postregister(Request $request){
@@ -142,11 +174,13 @@ public function logout(){
     
     $id=Cookie::get('ID');  
     
-    Session::pull('user.id', $id);
+    //Session::pull('user.id', $id);
     Cookie::queue("login", false, 365*24*60);
     // dd(Session::get('login'));
     Cookie::forget('ID');
+    Cookie::forget('table');
     Cookie::queue("ID", null, 365*24*60);
+    Cookie::queue("table", null, 365*24*60);
     //dd(Session::get('ID'));
     return redirect()->action('LoginController@login');
 }

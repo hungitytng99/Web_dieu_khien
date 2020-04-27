@@ -6,33 +6,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
+    <link rel="icon" type="image/png" href="<?php echo asset('images/icons/favicon.ico') ?>"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('vendor/bootstrap/css/bootstrap.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('vendor/animate/animate.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('vendor/css-hamburgers/hamburgers.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('vendor/animsition/css/animsition.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('vendor/select2/select2.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('vendor/daterangepicker/daterangepicker.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('css/util.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset('css/main.css') ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <style type="text/css">
-    h1 {
-        color: darkred;
-        font-family: courier;
-        font-size: 250%;
-    }
-    a:link, a:visited {
-        background-color: indianred;
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    a:hover, a:active {
-        background-color: darkred;
+    .button1 {
+      background-color: indianred;
+      border: none;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      margin: 10px 50px;
+      cursor: pointer;
+      border-radius: 12px;
     }
 </style>
 <body>
-    <html>
-    @include('title')
-    </html>
-    <h1>ADMIN CONTROL PAGE</h1>
-    <form action="" method="post">
-    <table>
+   <div class="limiter">
+
+    <div class="container-login100" style="background-image: url('/images/bg-01.jpg');">
+        
+        <form class="login100-form validate-form p-b-33 p-t-5" action="" method="post">
+        <div>
+            @include('title')
+        </div>
+
+        <span  style="color: darkred; font-family: courier; font-size: 300%;margin: 50px 50px; ">
+                    ADMIN CONTROL PAGE
+        </span>
+    
+        <table style="margin: 50px 50px;">
             <?php foreach ($st as $value) {?>
             <tr>
                 <td> <?php echo $value->name;?></td>
@@ -83,17 +101,31 @@
               <?php } ?>
 
         
-    </table>
+        </table>
     
-    @if (session('success'))
-          <div class="alert alert-danger" role="alert" style="color:Tomato">
-              {{ session('success') }}
-          </div>
-    @endif
-    <input type="submit" value="Change" style="margin-top: 20px;color: darkred;font-family: courier;"> </input>
-    @csrf
-    </form>
+        @if (session('success'))
+            <div class="alert alert-danger" role="alert" style="color:Tomato; margin: 0px 50px;">
+                {{ session('success') }}
+            </div>
+        @endif
+        <button class="button1" type="submit" style="margin: 0px 50px;" >
+                Change
+        </button>
+        @csrf
+        </form>
+    </div>
+</div>
+    <div id="dropDownSelect1"></div>
 
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <script src="js/main.js"></script>
 </body>
 <!-- checked -->
 </html>

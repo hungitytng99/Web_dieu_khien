@@ -22,7 +22,7 @@ class HomeController extends Controller{
 
     public function home($id) {
     
-        if (Cookie::get('ID')!=$id){
+        if (Cookie::get('ID')!=$id || Cookie::get('table')!='user'){
             return redirect()->action('LoginController@login');}
         
         $st = DB::table('thiet_bi')
@@ -34,7 +34,7 @@ class HomeController extends Controller{
      }
 
     public function homead(){
-        if (Cookie::get('ID')!='admin'){
+        if (Cookie::get('table')!='admin'){
             return redirect()->action('LoginController@login');}
         
         $st = DB::table('thiet_bi')
@@ -46,7 +46,7 @@ class HomeController extends Controller{
     public function change(Request $request, $id)
     {
         
-        if (Cookie::get('ID')!=$id){
+        if (Cookie::get('ID')!=$id || Cookie::get('table')!='user'){
             return redirect()->action('LoginController@login');}
         $st = DB::table('thiet_bi')
                 ->join('connective', 'thiet_bi.id', '=', 'connective.id_tb')
@@ -73,7 +73,7 @@ class HomeController extends Controller{
     }
     public function changead(Request $request)
     {
-        if (Cookie::get('ID')!='admin'){
+        if (Cookie::get('table')!='admin'){
             return redirect()->action('LoginController@login');}
         $stt = DB::table('thiet_bi')->get();
         foreach ($stt as $key) {

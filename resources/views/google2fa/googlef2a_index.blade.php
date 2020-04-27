@@ -17,33 +17,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo asset('css/util.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo asset('css/main.css') ?>">
 </head>
-<style type="text/css">
-  .button1 {
-      background-color: indianred;
-      border: none;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 15px;
-      margin: 10px 50px;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    .input1 {
-      width: 20%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: 1px solid darkred;
-      outline: none;
-    }
-
-    .input1:focus {
-      background-color:lightcoral;
-    }
-</style>
 <body>
   
   <div class="limiter">
@@ -51,30 +24,20 @@
 
       <div class="wrap-login100 p-t-30 p-b-50">
         <span class="login100-form-title p-b-41">
-          Login
+          Google2fa
         </span>
-        
+        <span class="login100-form-title p-b-20" style="text-align: center; font-size: 110%;">
+          One Time Password
+        </span>
 
         <form class="login100-form validate-form p-b-33 p-t-5" action="" method="post">
 
+            <!-- <label for="one_time_password" class="col-md-4 control-label">One Time Password</label> -->
 
-          <div class="wrap-input100 validate-input" data-validate = "Enter username">
-            <input class="input100" type="text" name="username" placeholder="User name">
-            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
-          </div>
-
-          <div class="wrap-input100 validate-input" data-validate="Enter password">
-            <input class="input100" type="password" name="password" placeholder="Password">
+          <div class="wrap-input100 validate-input" data-validate="Enter one time password">
+            <input class="input100" id="one_time_password" type="number" class="form-control" name="one_time_password" required autofocus placeholder="Password">
             <span class="focus-input100" data-placeholder="&#xe80f;"></span>
           </div>
-          <div class="pull-left" style="margin-top: 20px;font-family: courier; font-size: 150%;">
-            <a class="btn btn-primary" style="font-size: 20px;"  href="/myregister">     REGISTER</a>
-          </div>
-        @if (session('error'))
-          <div class="pull-left" role="alert" style="color:Tomato">
-              {{ session('error') }}
-          </div>
-        @endif
           <div class="container-login100-form-btn m-t-32">
             <button class="login100-form-btn">
               Login
@@ -101,3 +64,36 @@
 
 </body>
 </html>
+
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Google2fa</div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="">
+                        {{ csrf_field() }}
+
+                        <div class="form-group">
+                            <label for="one_time_password" class="col-md-4 control-label">One Time Password</label>
+
+                            <div class="col-md-6">
+                                <input id="one_time_password" type="number" class="form-control" name="one_time_password" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -13,8 +13,8 @@
 */
 Route::get('/', 'LoginController@login');
 Route::post('/', 'UserController@postlogin');
-Route::get('/index/{id}', 'LoginController@index');
-Route::post('/index/{id}', 'LoginController@postindex');
+Route::get('/one_time_password/{id}', 'UserController@one_time_password');
+Route::post('/one_time_password/{id}', 'UserController@post_one_time_password');
 
 Route::get('/myregister', 'LoginController@register');
 // Route::post('/myregister', 'UserController@register');
@@ -31,7 +31,7 @@ Route::PATCH('/updateus/{id}', 'AdminUserController@update');
 Route::get('/edittb/{id}', 'AdminThietBiController@edit');
 Route::PATCH('/updatetb/{id}', 'AdminThietBiController@update');
 Route::get('/deleteus/{id}', 'AdminUserController@delete');
-Route::get('/deletetb/{id}', 'AdminThietbiController@delete');
+Route::get('/deletetb/{id}', 'AdminThietBiController@delete');
 Route::post('/addus', 'AdminUserController@add');
 Route::post('/addtb', 'AdminThietBiController@add');
 Route::get('/connective','ConnectiveController@connective');

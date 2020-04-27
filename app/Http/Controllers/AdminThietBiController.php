@@ -18,7 +18,7 @@
 
     public function index()
     {
-        if (Cookie::get('ID')!='admin'){
+        if (Cookie::get('table')!='admin'){
             return redirect()->action('LoginController@login');}
         $st = DB::table('thiet_bi')->orderBy('id', 'asc')->get();
         return view('/admin_thiet_bi',compact('st'));
@@ -26,7 +26,7 @@
 
     public function edit($id)
     {
-        if (Cookie::get('ID')!='admin'){
+        if (Cookie::get('table')!='admin'){
             return redirect()->action('LoginController@login');}
         $value = DB::table('thiet_bi')->find($id);
         $pageName = 'Update Thiet Bi';
@@ -35,7 +35,7 @@
 
     public function update(Request $request, $id)
     {
-        if (Cookie::get('ID')!='admin'){
+        if (Cookie::get('table')!='admin'){
             return redirect()->action('LoginController@login');}
         //$value=$request->all();
         if($request->name==null){
@@ -56,7 +56,7 @@
     }
     public function delete($id)
     {
-        if (Cookie::get('ID')!='admin'){
+        if (Cookie::get('table')!='admin'){
             return redirect()->action('LoginController@login');}
         $value = DB::table('thiet_bi')
                 ->where('id',$id)
@@ -69,7 +69,7 @@
     }
     public function add(Request $request)
     {
-        if (Cookie::get('ID')!='admin'){
+        if (Cookie::get('table')!='admin'){
             return redirect()->action('LoginController@login');}
         if($request->name!=null){
         DB::table('thiet_bi')
