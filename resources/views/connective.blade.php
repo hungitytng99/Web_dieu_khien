@@ -90,7 +90,7 @@
         
       <form class="login100-form validate-form p-b-33 p-t-5" action="/addcn" method="post" >
         @include('title')
-        <span  style="color: darkred; font-family: courier; font-size: 250%;margin: 50px 50px; font-weight: bold; ">
+        <span  style="color: darkred; font-family: courier; font-size: 150%;margin: 50px 50px; font-weight: bold; ">
                     CONNECTIVE MANAGEMENT
         </span>
     <div class="col-md-6 col-xs-offset-3" style="margin-top:30px;">

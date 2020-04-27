@@ -18,7 +18,7 @@ class admin extends Seeder
 		 
 		'password' => Hash::make('11091999'),
 		 
-		'comment'=>'0'
+		'email'=>'admin11091999@gmail.com'
 		 
 		]);
     }

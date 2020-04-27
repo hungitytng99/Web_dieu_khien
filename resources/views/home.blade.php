@@ -43,6 +43,7 @@
         
         <form class="login100-form validate-form p-b-33 p-t-5" action="" method="post">
                 <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/logout">LOGOUT</a>
+                <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/creat_register">G2a</a>
                 <span  style="color: darkred; font-family: courier; font-size: 300%;margin: 50px 50px; ">
                     DEVICE CONTROLLER
                 </span>
@@ -104,11 +105,10 @@
                 @endif
                 
                 @csrf
-                <div style="margin: 0px 50px;">
+                
                 <button class="button1" type="submit" >
                 Change
                 </button>
-                </div>
             </div>
             @csrf
         </form>

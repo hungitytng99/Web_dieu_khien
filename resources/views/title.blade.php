@@ -26,6 +26,7 @@
 <body>
     <div  style="margin-top: 2px; font-size: 150%;">
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/logout">LOGOUT</a>
+        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/creat_register">G2a</a>
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/connective">CONNECTIVE MANAGEMENT</a>
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/admin_thiet_bi"> DEVICE MANAGEMENT </a>
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/admin_user">USER MANAGEMENT</a>

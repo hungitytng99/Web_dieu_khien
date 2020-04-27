@@ -92,7 +92,7 @@
         
       <form class="login100-form validate-form p-b-33 p-t-5" action="/addus" method="post" >
         @include('title')
-        <span  style="color: darkred; font-family: courier; font-size: 300%;margin: 50px 50px; font-weight: bold; ">
+        <span  style="color: darkred; font-family: courier; font-size: 200%;margin: 50px 50px; font-weight: bold; ">
                     USER MANAGEMENT
         </span>
     

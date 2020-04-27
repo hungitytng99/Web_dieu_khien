@@ -46,7 +46,7 @@
             @include('title')
         </div>
 
-        <span  style="color: darkred; font-family: courier; font-size: 300%;margin: 50px 50px; ">
+        <span  style="color: darkred; font-family: courier; font-size: 200%;margin: 50px 50px; font-weight: bold;">
                     ADMIN CONTROL PAGE
         </span>
     
