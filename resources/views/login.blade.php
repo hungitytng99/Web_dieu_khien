@@ -17,33 +17,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo asset('css/util.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo asset('css/main.css') ?>">
 </head>
-<style type="text/css">
-  .button1 {
-      background-color: indianred;
-      border: none;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 15px;
-      margin: 10px 50px;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    .input1 {
-      width: 20%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: 1px solid darkred;
-      outline: none;
-    }
-
-    .input1:focus {
-      background-color:lightcoral;
-    }
-</style>
 <body>
   
   <div class="limiter">

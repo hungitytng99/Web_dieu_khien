@@ -63,6 +63,7 @@
                     <button  type="button" data-toggle="dropdown">Option
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu">
+                        <li><a href="/update_prf">update_profile</a></li>
                         <li><a href="/creat_register">G2a</a></li>
                         <li><a href="/logout">LOGOUT</a></li>
                     </ul>

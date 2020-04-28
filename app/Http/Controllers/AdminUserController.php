@@ -37,7 +37,7 @@
         if (Cookie::get('table')!='admin'){
             return redirect()->action('LoginController@login');}
         //$value=$request->all();
-        if(($request->username==null)||($request->password==null)||($request->fullname==null)){
+        if(($request->username==null)||($request->email==null)||($request->fullname==null)){
         
         return redirect()->action('AdminUserController@edit',['id'=>$id])->with('error', 'Name, password, comment may not be blank.');    
         }
@@ -47,8 +47,7 @@
                 ->update(array(
                     'username'=> $request->username,
                     'fullname'=> $request->fullname,
-                    'email'=> $request->email,
-                    'password'=> Hash::make($request->password)
+                    'email'=> $request->email
                 ));
         return redirect()->action('AdminUserController@index')->with('success', 'Update success.');
         

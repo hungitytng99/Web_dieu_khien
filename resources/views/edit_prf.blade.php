@@ -51,34 +51,34 @@
 
       <div class="wrap-login100 p-t-30 p-b-50">
         <span class="login100-form-title p-b-41">
-          Edit user
+          Update profile
         </span>
         
 
-        <form class="login100-form validate-form p-b-33 p-t-5" method="post" action="/updateus/{{$value->id}}">
+        <form class="login100-form validate-form p-b-33 p-t-5" method="post" action="">
 
 
-            @method('PATCH')
+            
             @csrf
             
             <p>
                 <div class="col-md-4" style="margin: 10px 10px;  color: darkred;">
                     User name
                 </div>
-                <input class="input1" style="margin: 10px 10px"; type="text" name="username" value="{{ $value->username }}">
+                <input class="input1" style="margin: 10px 10px"; type="text" name="username" >
             </p>
 
             <p>
                 <div class="col-md-4" style="margin: 10px 10px;  color: darkred;">
                     Full name
                 </div>
-                <input class="input1" style="margin: 10px 10px"; type="text" name="fullname" value="{{ $value->fullname }}">
+                <input class="input1" style="margin: 10px 10px"; type="text" name="fullname" >
             </p>
             <p>
                 <div class="col-md-4" style="margin: 10px 10px;  color: darkred;">
                     Email
                 </div>
-                <input class="input1" style="margin: 10px 10px"; id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $value->email }}" required autocomplete="email" autofocus placeholder="Email" class="form-control" required>
+                <input class="input1" style="margin: 10px 10px"; id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required autocomplete="email" autofocus placeholder="Email" class="form-control" required>
                 @error('email')
                     <span class="invalid-feedback" style="margin: 10px 10px"; role="alert">
                         <strong>{{ $message }}</strong>

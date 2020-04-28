@@ -13,9 +13,10 @@
 */
 Route::get('/', 'LoginController@login');
 Route::post('/', 'UserController@postlogin');
-Route::get('/one_time_password/{id}', 'UserController@one_time_password');
-Route::post('/one_time_password/{id}', 'UserController@post_one_time_password');
-
+Route::get('/one_time_password/{id}', 'GoogleAuthController@one_time_password');
+Route::post('/one_time_password/{id}', 'GoogleAuthController@post_one_time_password');
+Route::get('/update_prf', 'GoogleAuthController@get_update_prf');
+Route::post('/update_prf', 'GoogleAuthController@update_prf');
 Route::get('/myregister', 'LoginController@register');
 // Route::post('/myregister', 'UserController@register');
 Route::post('/myregister', 'Auth\RegisterController@register');

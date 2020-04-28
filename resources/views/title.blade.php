@@ -40,13 +40,7 @@
     }
 </style>
 <body>
-    <!-- <div  style="margin-top: 2px; font-size: 150%;">
-        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/logout">LOGOUT</a>
-        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/creat_register">G2a</a>
-        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/connective">CONNECTIVE MANAGEMENT</a>
-        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/admin_thiet_bi"> DEVICE MANAGEMENT </a>
-        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/admin_user">USER MANAGEMENT</a>
-        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/homead">CONTROL PAGE</a> -->
+    
         
         <div class="login100-form-btn" style="font-size: 150%;float:right;margin: 20px 20px 20px 50px">
             <button  type="button" data-toggle="dropdown">Option
@@ -59,13 +53,12 @@
                 <li><a href="/connective">CONNECTIVE MANAGEMENT</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Setting</li>
+                <li><a href="/update_prf">update_profile</a></li>
                 <li><a href="/creat_register">G2a</a></li>
                 <li><a href="/logout">LOGOUT</a></li>
             </ul>
         </div>
 
-    <!-- </div> -->
-    
     <div id="dropDownSelect1"></div>
   
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

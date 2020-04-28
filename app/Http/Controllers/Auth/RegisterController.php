@@ -102,6 +102,8 @@ class RegisterController extends Controller
             $google2fa = app('pragmarx.google2fa');
             if($user->google2fa_secret==null) $user->google2fa_secret=$google2fa->generateSecretKey();
             $registration_data["email"] = $user->email;
+            $registration_data["username"] = $user->username;
+            $registration_data["fullname"] = $user->fullname;
             $registration_data['google2fa_secret']=$user->google2fa_secret;
             $registration_data['id'] = $user->id;
             $request->session()->put('registration_data', $registration_data);
@@ -119,6 +121,8 @@ class RegisterController extends Controller
             $google2fa = app('pragmarx.google2fa');
             if($user->google2fa_secret==null) $user->google2fa_secret=$google2fa->generateSecretKey();
             $registration_data['email'] = $user->email;
+            $registration_data["username"] = $user->username;
+            $registration_data["fullname"] = $user->fullname;
             $registration_data['google2fa_secret']=$user->google2fa_secret;
             $registration_data['id'] = $user->id;
             $request->session()->put('registration_data', $registration_data);
@@ -155,7 +159,10 @@ class RegisterController extends Controller
             DB::table('admin')
             ->where("id",$data['id'])
             ->update(
-                [ 'google2fa_secret'=>$data['google2fa_secret']]);
+                [ 'username'=>$data['username'],
+                'fullname'=>$data['fullname'] , 
+                'email'=>$data['email'] , 
+                'google2fa_secret'=>$data['google2fa_secret']]);
             $request->session()->forget('registration_data');
             return redirect()->action('LoginController@login');
         }
@@ -164,7 +171,10 @@ class RegisterController extends Controller
             DB::table('users')
             ->where("id",$data['id'])
             ->update(
-                ['google2fa_secret'=>$data['google2fa_secret']]);
+                [ 'username'=>$data['username'],
+                'fullname'=>$data['fullname'] , 
+                'email'=>$data['email'] , 
+                'google2fa_secret'=>$data['google2fa_secret']]);
             $request->session()->forget('registration_data');
             return redirect()->action('LoginController@login');           
         }
@@ -176,17 +186,5 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    // protected function create(array $data)
-    // {   
-    //     //dd($data['username']);
-    //     DB::table('users')
-    //     ->insert(
-    //         [ 'username'=>$data['username'],
-    //         'fullname'=>$data['fullname'] , 
-    //         'email'=>$data['email'] , 
-    //         'password'=>Hash::make($data['password']),
-    //         'google2fa_secret'=>$data['google2fa_secret']]);
-    //     $request->session()->forget('registration_data');
-    //     return view('login');
-    // }
+    
 }
