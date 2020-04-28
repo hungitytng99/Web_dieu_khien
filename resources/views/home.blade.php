@@ -19,6 +19,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
     .button1 {
@@ -34,6 +37,20 @@
       cursor: pointer;
       border-radius: 12px;
     }
+    a:link, a:visited {
+        background-color: indianred;
+        color: white;
+        padding: 10px 20px;
+        margin: 10px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 12px;
+    }
+
+    a:hover, a:active {
+        background-color:lightcoral;
+    }
 </style>
 <body>
   
@@ -42,8 +59,15 @@
     <div class="container-login100" style="background-image: url('/images/bg-01.jpg');">
         
         <form class="login100-form validate-form p-b-33 p-t-5" action="" method="post">
-                <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/logout">LOGOUT</a>
-                <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/creat_register">G2a</a>
+                <div class="login100-form-btn" style="font-size: 150%;float:right;margin: 20px 20px 20px 50px">
+                    <button  type="button" data-toggle="dropdown">Option
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/creat_register">G2a</a></li>
+                        <li><a href="/logout">LOGOUT</a></li>
+                    </ul>
+                </div>
+                
                 <span  style="color: darkred; font-family: courier; font-size: 300%;margin: 50px 50px; ">
                     DEVICE CONTROLLER
                 </span>

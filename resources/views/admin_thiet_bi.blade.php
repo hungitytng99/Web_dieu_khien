@@ -22,31 +22,31 @@
 </head>
 <style type="text/css">
     
-    table {
+    .table {
       width:80%;
     }
-    table, th, td {
+    .table, th, td {
       border: 1px solid darkred;
       border-collapse: collapse;
     }
-    th, td {
+    .th, .td {
       padding: 15px;
       text-align: left;
     }
-    table tr:nth-child(even) {
+    .table tr:nth-child(even) {
       background-color: moccasin;
     }
-    table tr:nth-child(odd) {
+    .table tr:nth-child(odd) {
       background-color: #fff;
     }
-    table th {
+    .table th {
       background-color: lightcoral;
       color: white;
     }
     a:link, a:visited {
         background-color: indianred;
         color: white;
-        padding: 10px 20px;
+        padding: 5px 5px;
         margin: 10px 5px;
         text-align: center;
         text-decoration: none;
@@ -72,7 +72,7 @@
       border-radius: 8px;
     }
     .input1 {
-      width: 20%;
+      width: 90%;
       padding: 12px 20px;
       margin: 8px 0;
       box-sizing: border-box;
@@ -91,7 +91,7 @@
         
       <form class="login100-form validate-form p-b-33 p-t-5" action="/addtb" method="post" >
         @include('title')
-        <span  style="color: darkred; font-family: courier; font-size: 200%;margin: 50px 50px; font-weight: bold; ">
+        <span  style="color: darkred; font-family: courier; font-size: 350%;margin: 50px 50px; font-weight: bold; ">
                     DEVICE MANAGEMENT
         </span>
         
@@ -100,7 +100,7 @@
             
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="panel panel-info">
-                  <div class="panel-heading" style="margin: 10px 50px; font-size: 150%; color: darkred;">
+                  <div class="panel-body" style="margin: 10px 50px; font-size: 150%; color: darkred;">
                     ADD DEVICE
                   </div>
                   <div class="panel-body">
@@ -148,7 +148,7 @@
                 @endif
         </div> 
 
-        <table border="1" style="margin: 50px 50px;">
+        <table class="table" border="1" >
         	<thead>
             	<tr>
                 	<th>ID</th>

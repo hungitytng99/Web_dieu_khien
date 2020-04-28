@@ -19,20 +19,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
-    
+    a:link, a:visited {
+        background-color: indianred;
+        color: white;
+        padding: 10px 20px;
+        margin: 10px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 12px;
+    }
+
+    a:hover, a:active {
+        background-color:lightcoral;
+    }
 </style>
 <body>
-    <div  style="margin-top: 2px; font-size: 150%;">
+    <!-- <div  style="margin-top: 2px; font-size: 150%;">
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/logout">LOGOUT</a>
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/creat_register">G2a</a>
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/connective">CONNECTIVE MANAGEMENT</a>
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/admin_thiet_bi"> DEVICE MANAGEMENT </a>
         <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/admin_user">USER MANAGEMENT</a>
-        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/homead">CONTROL PAGE</a>
-        <!-- <div class="login100-form-btn" style="margin-top: 5px;font-family: courier;font-size: 75%;float:right;"><a class="btn btn-primary" href="/logout">LOGOUT</a></div> -->
-    </div>
+        <a class="login100-form-btn" style="font-size: 75%;float:right;" href="/homead">CONTROL PAGE</a> -->
+        
+        <div class="login100-form-btn" style="font-size: 150%;float:right;margin: 20px 20px 20px 50px">
+            <button  type="button" data-toggle="dropdown">Option
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Controller</li>
+                <li><a href="/homead">CONTROL HOME</a></li>
+                <li><a href="/admin_user">USER MANAGEMENT</a></li>
+                <li><a href="/admin_thiet_bi">DEVICE MANAGEMENT</a></li>
+                <li><a href="/connective">CONNECTIVE MANAGEMENT</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Setting</li>
+                <li><a href="/creat_register">G2a</a></li>
+                <li><a href="/logout">LOGOUT</a></li>
+            </ul>
+        </div>
+
+    <!-- </div> -->
     
     <div id="dropDownSelect1"></div>
   
