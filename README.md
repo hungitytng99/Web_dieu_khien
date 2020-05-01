@@ -7,7 +7,6 @@ Web_controller is a web site built on the framework of laravel. Web_controller i
 - Run composer and npm to install the necessary packages in the project
 ```
 composer install
-npm install
 ```
 - Go to mysql, create a new database named: `web_dieu_khien`
 - Then we issue the following command to copy the env file:
