@@ -31,5 +31,5 @@ php artisan db:seed
 - Create serve start:
 ```php artisan serve```
 - Log in as admin
-   - user: Admin
+   - user: admin
    - Password: 11091999
